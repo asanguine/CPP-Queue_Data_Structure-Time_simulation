@@ -16,6 +16,9 @@ public:
 		return guestID;
 	}
 
+	std::string tellIfVIP();
+	bool checkIfVIP();
+
 private:
 
 	std::string guestID;

@@ -15,6 +15,7 @@ private:
         Node* next;
 
         Node(const Guest& guest) : guest(guest), next(nullptr) {}
+        Node() {};
     };
 
     Node* head = NULL;
@@ -29,7 +30,18 @@ public:
     Guest dequeue();
     //Node getfront();
     bool isEmpty();
-
-
     void printGuests();
+    int getSize() const;
+    Node* getHead() const {
+        return head;
+    };
+
+    void sortQueue(Queue& queue);
+
+
+    //void splitQueue(Queue& leftQueue, Queue& rightQueue);
+    //void mergeQueues(Queue& leftQueue, Queue& rightQueue);
+
+
+
 };

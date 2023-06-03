@@ -1,5 +1,5 @@
 #include "Guest.h"
-
+#include <iostream>
 
 
 Guest::Guest(std::string _guestID,
@@ -11,3 +11,18 @@ Guest::Guest(std::string _guestID,
 					isVIP(_isVIP){}
 
 
+std::string Guest::tellIfVIP() {
+	std::string VIPstatus;
+	if (isVIP) {
+		VIPstatus = "VIP";
+	}
+	else {
+		VIPstatus = "non-VIP";
+	}
+	return VIPstatus;
+}
+
+bool Guest::checkIfVIP() {
+	if (isVIP) return true;
+	else return false;
+}
