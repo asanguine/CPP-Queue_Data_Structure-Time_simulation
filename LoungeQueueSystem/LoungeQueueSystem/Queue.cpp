@@ -19,7 +19,7 @@ void Queue::addGuest(const Guest& guest) {
 void Queue::printGuests() {
     Node* temp = head;
     while (temp != nullptr) {
-        std::cout << "Guest ID: " << temp->guest.getGuestID() << " | " << temp->guest.tellIfVIP() << std::endl;
+        std::cout << "Guest ID: " << temp->guest.getGuestName() << " | " << temp->guest.tellIfVIP() << std::endl;
         temp = temp->next;
     }
 }
@@ -97,3 +97,34 @@ void Queue::sortQueue(Queue& queue) {
 
 
 
+std::vector<Guest> Queue::getGuests() const {
+    std::vector<Guest> guests;
+    Node* current = head;
+    while (current != nullptr) {
+        guests.push_back(current->guest);
+        current = current->next;
+    }
+    return guests;
+}
+
+
+
+
+
+void Queue::seatGuests(std::vector<Guest>& seats, int maxSeats) {
+    int availableSeats = maxSeats - seats.size();
+
+    if (seats.size() == maxSeats) {
+        std::cout << "No available seats in the lounge." << std::endl;
+        return;
+    }
+
+    // Move guests from the queue to the seats vector
+    int guestsToSeat = std::min(availableSeats, getSize());
+    for (int i = 0; i < guestsToSeat; i++) {
+        Guest guest = dequeue();
+        seats.push_back(guest);
+    }
+
+    std::cout << guestsToSeat << " guests have been seated." << std::endl;
+}

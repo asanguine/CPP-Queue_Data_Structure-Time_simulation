@@ -6,9 +6,6 @@
 
 
 
-
-
-
 class Lounge
 {
 
@@ -19,17 +16,17 @@ private:
 
 public:
     Lounge(int _maxSeats = 10);
-    std::vector<Guest> seats;
+    //std::vector<Guest> seats;
 
 
     int getSeatsCount();
-    void seatGuests();
+    //void seatGuests();
     void unseatGuests();
-    void checkAvailability();
+    //void checkAvailability();
+
+    void printLounge();
 
 
-
-    
 
 
 

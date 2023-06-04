@@ -7,21 +7,23 @@ class Guest
 
 
 public:
-	Guest(std::string _guestID = "000",
+	Guest(std::string _guestName = "AAA AAA",
 		  std::string _arrivalTime = "00:00",
 		  std::string _stayDuration = "00:00",
 		  bool _isVIP = false);
 
-	std::string getGuestID() {
-		return guestID;
+	std::string getGuestName() {
+		return guestName;
 	}
 
 	std::string tellIfVIP();
 	bool checkIfVIP();
 
+	std::string getArrivalTime() const;
+
 private:
 
-	std::string guestID;
+	std::string guestName;
 	std::string arrivalTime;
 	std::string stayDuration;
 	bool isVIP;

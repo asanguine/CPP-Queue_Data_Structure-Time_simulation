@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CsvReader.cpp" />
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="Lounge.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CsvReader.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="Lounge.h" />
     <ClInclude Include="Queue.h" />

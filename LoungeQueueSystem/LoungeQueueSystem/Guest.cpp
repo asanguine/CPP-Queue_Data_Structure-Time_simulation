@@ -2,10 +2,10 @@
 #include <iostream>
 
 
-Guest::Guest(std::string _guestID,
+Guest::Guest(std::string _guestName,
 	std::string _arrivalTime,
 	std::string _stayDuration,
-	bool _isVIP) :  guestID(_guestID),
+	bool _isVIP) :  guestName(_guestName),
 					arrivalTime(_arrivalTime),
 					stayDuration(_stayDuration),
 					isVIP(_isVIP){}
@@ -26,3 +26,11 @@ bool Guest::checkIfVIP() {
 	if (isVIP) return true;
 	else return false;
 }
+
+
+std::string Guest::getArrivalTime() const {
+	return arrivalTime;
+}
+
+
+

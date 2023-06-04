@@ -1,7 +1,7 @@
 #pragma once
 #include "Guest.h"
 #include <iostream>
-
+#include <vector>
 
 
 class Queue
@@ -37,6 +37,12 @@ public:
     };
 
     void sortQueue(Queue& queue);
+
+    std::vector<Guest> getGuests() const;
+
+
+    void seatGuests(std::vector<Guest>& seats, int maxSeats);
+
 
 
     //void splitQueue(Queue& leftQueue, Queue& rightQueue);
