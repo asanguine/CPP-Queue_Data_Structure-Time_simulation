@@ -41,7 +41,7 @@ public:
     std::vector<Guest> getGuests() const;
 
 
-    void seatGuests(std::vector<Guest>& seats, int maxSeats);
+    ///void seatGuests(std::vector<Guest>& seats, int maxSeats);
 
 
 

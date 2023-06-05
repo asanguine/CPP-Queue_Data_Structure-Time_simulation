@@ -1,5 +1,20 @@
 #pragma once
-class initmain
+
+
+
+
+class InitMain
 {
+private:
+	
+
+
+public:
+	InitMain();
+	void init();
+
+
+
+
 };
 

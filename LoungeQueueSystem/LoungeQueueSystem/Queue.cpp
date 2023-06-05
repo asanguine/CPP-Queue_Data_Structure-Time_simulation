@@ -3,6 +3,12 @@
 
 
 void Queue::addGuest(const Guest& guest) {
+
+    if (getSize() >= 10) {
+        std::cout << "The queue is full. Cannot add more guests." << std::endl;
+        return;
+    }
+
     Node* newNode = new Node(guest);
 
     if (head == nullptr) {
@@ -28,7 +34,7 @@ void Queue::printGuests() {
 
 Guest Queue::dequeue() {
     if (isEmpty()) {
-        std::cout << "\nqueue is empty\n" << std::endl;
+        throw std::runtime_error("Queue is empty");
     }
 
     Node* temp = head;
@@ -48,11 +54,12 @@ Guest Queue::dequeue() {
 
 
 bool Queue::isEmpty() {                                 
-    if (head == tail == NULL) {
+    if (head == nullptr && tail == nullptr) {
         return true;                       
     }
     else return false;
 }
+
 
 int Queue::getSize() const{
     int count = 0;
@@ -111,20 +118,20 @@ std::vector<Guest> Queue::getGuests() const {
 
 
 
-void Queue::seatGuests(std::vector<Guest>& seats, int maxSeats) {
-    int availableSeats = maxSeats - seats.size();
-
-    if (seats.size() == maxSeats) {
-        std::cout << "No available seats in the lounge." << std::endl;
-        return;
-    }
-
-    // Move guests from the queue to the seats vector
-    int guestsToSeat = std::min(availableSeats, getSize());
-    for (int i = 0; i < guestsToSeat; i++) {
-        Guest guest = dequeue();
-        seats.push_back(guest);
-    }
-
-    std::cout << guestsToSeat << " guests have been seated." << std::endl;
-}
+//void Queue::seatGuests(std::vector<Guest>& seats, int maxSeats) {
+//    int availableSeats = maxSeats - seats.size();
+//
+//    if (seats.size() == maxSeats) {
+//        std::cout << "No available seats in the lounge." << std::endl;
+//        return;
+//    }
+//
+//    // Move guests from the queue to the seats vector
+//    int guestsToSeat = std::min(availableSeats, getSize());
+//    for (int i = 0; i < guestsToSeat; i++) {
+//        Guest guest = dequeue();
+//        seats.push_back(guest);
+//    }
+//
+//    std::cout << guestsToSeat << " guests have been seated." << std::endl;
+//}
