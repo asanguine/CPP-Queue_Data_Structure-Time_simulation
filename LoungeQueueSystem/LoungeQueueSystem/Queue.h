@@ -2,7 +2,7 @@
 #include "Guest.h"
 #include <iostream>
 #include <vector>
-
+#include <queue>
 
 class Queue
 {
@@ -20,10 +20,15 @@ private:
 
     Node* head = NULL;
     Node* tail;
-
+    std::queue<Guest>queue2;
+    //Queue queue2;
+    std::vector<Guest> remainingGuests;
+    //Guest remainingGuests[];
 
 public:
     Queue() : head(nullptr), tail(nullptr) {}
+
+
 
 
     void addGuest(const Guest& guest);
@@ -37,6 +42,8 @@ public:
     };
 
     void sortQueue(Queue& queue);
+
+    std::vector<Guest>& getRemainingGuestsArray();
 
     std::vector<Guest> getGuests() const;
 

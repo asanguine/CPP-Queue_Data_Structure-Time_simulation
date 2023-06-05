@@ -12,7 +12,7 @@ public:
 		  std::string _stayDuration = "00:00",
 		  bool _isVIP = false);
 
-	std::string getGuestName() {
+	std::string getGuestName() const {
 		return guestName;
 	}
 

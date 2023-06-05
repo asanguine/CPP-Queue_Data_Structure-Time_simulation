@@ -51,8 +51,19 @@ void Lounge::seatGuests(Queue& queue) {
 		std::cout << guest.getGuestName() << " has been seated." << std::endl;
 	}
 
+	
+
+	if (queue.isEmpty()) {
+		std::vector<Guest>& remainingGuests = queue.getRemainingGuestsArray();
+		int numRemainingGuests = remainingGuests.size();
+
+		for (int i = 0; i < std::min(numRemainingGuests, 10); i++) {
+			queue.addGuest(remainingGuests[i]);
+		}
+	}
+
 	// If there are still available seats, fill the queue with the remaining guests
-	if (availableSeats > 0) {
+	/*if (availableSeats > 0) {
 		while (availableSeats > 0 && !remainingGuests.empty()) {
 			Guest guest = remainingGuests.front();
 			remainingGuests.pop();
@@ -60,7 +71,7 @@ void Lounge::seatGuests(Queue& queue) {
 			availableSeats--;
 			std::cout << guest.getGuestName() << " has joined the queue." << std::endl;
 		}
-	}
+	}*/
 }
 
 
@@ -68,7 +79,7 @@ void Lounge::seatGuests(Queue& queue) {
 
 
 void Lounge::unseatGuests() {
-
+	std::cout << "will start unseating guests by their duration of stay" << std::endl;
 
 }
 
@@ -113,6 +124,6 @@ std::string Lounge::getNextTime(std::string arrivalTime) {
 
 
 
-void Lounge::addRemainingGuests(const Guest& guest) {
-	remainingGuests.push(guest);
-}
+//void Lounge::addRemainingGuests(const Guest& guest) {
+//	remainingGuests.push(guest);
+//}

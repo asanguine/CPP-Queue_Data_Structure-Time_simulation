@@ -10,6 +10,7 @@ int main()
 {
 	Lounge lounge(10);
 	Queue queue;
+	Queue queue2;
 	//std::vector<Guest> seats;
 
 	{
@@ -74,17 +75,23 @@ int main()
 	queue.printGuests();
 
 
+	
 	std::cout << "\n*** seating into the lounge ***\n" << std::endl;
 
 	lounge.seatGuests(queue);
 	std::cout << lounge.getSeatsCount() << std::endl;
 
+
+
 	lounge.printLounge();
 
 	std::cout << "\n*** new queue ***\n" << std::endl;
 
-	///queue.sortQueue(queue);
-	///queue.printGuests();
+	queue.printGuests();
+
+	std::cout << "\n*** new queue sorted ***\n" << std::endl;
+	queue.sortQueue(queue);
+	queue.printGuests();
 
 	/*std::cout << "\nprinting lounge...\n" << std::endl;
 	for (Guest& guest : seats) {

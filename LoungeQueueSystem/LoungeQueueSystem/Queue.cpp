@@ -6,6 +6,8 @@ void Queue::addGuest(const Guest& guest) {
 
     if (getSize() >= 10) {
         std::cout << "The queue is full. Cannot add more guests." << std::endl;
+        remainingGuests.push_back(guest);
+
         return;
     }
 
@@ -19,7 +21,8 @@ void Queue::addGuest(const Guest& guest) {
         tail -> next = newNode;
         tail = newNode;
         newNode -> next = NULL;
-    }
+    } 
+
 }
 
 void Queue::printGuests() {
@@ -103,7 +106,6 @@ void Queue::sortQueue(Queue& queue) {
 
 
 
-
 std::vector<Guest> Queue::getGuests() const {
     std::vector<Guest> guests;
     Node* current = head;
@@ -115,23 +117,7 @@ std::vector<Guest> Queue::getGuests() const {
 }
 
 
+std::vector<Guest>& Queue::getRemainingGuestsArray() {
+    return remainingGuests;
+}
 
-
-
-//void Queue::seatGuests(std::vector<Guest>& seats, int maxSeats) {
-//    int availableSeats = maxSeats - seats.size();
-//
-//    if (seats.size() == maxSeats) {
-//        std::cout << "No available seats in the lounge." << std::endl;
-//        return;
-//    }
-//
-//    // Move guests from the queue to the seats vector
-//    int guestsToSeat = std::min(availableSeats, getSize());
-//    for (int i = 0; i < guestsToSeat; i++) {
-//        Guest guest = dequeue();
-//        seats.push_back(guest);
-//    }
-//
-//    std::cout << guestsToSeat << " guests have been seated." << std::endl;
-//}

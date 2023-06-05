@@ -13,8 +13,7 @@ class Lounge
 private:
     const int maxSeats;
     //Queue queue;
-    std::queue<Guest> remainingGuests;
-
+    //std::queue<Guest> remainingGuests;
 
     //std::string currentTime;
     std::string currentTime;
