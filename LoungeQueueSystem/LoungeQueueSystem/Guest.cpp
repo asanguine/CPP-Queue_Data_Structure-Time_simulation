@@ -22,6 +22,7 @@ std::string Guest::tellIfVIP() {
 	return VIPstatus;
 }
 
+
 bool Guest::checkIfVIP() {
 	if (isVIP) return true;
 	else return false;
@@ -31,6 +32,21 @@ bool Guest::checkIfVIP() {
 std::string Guest::getArrivalTime() const {
 	return arrivalTime;
 }
+
+
+std::string Guest::getGuestName() const {
+	return guestName;
+}
+
+
+int Guest::getStayDuration() const {
+	std::string minueString = stayDuration.substr(stayDuration.find(":") + 1);
+	int minute = std::stoi(minueString);
+	return minute;
+}
+
+
+
 
 
 

@@ -28,7 +28,7 @@ private:
 public:
     Queue() : head(nullptr), tail(nullptr) {}
 
-
+    ~Queue() {};
 
 
     void addGuest(const Guest& guest);

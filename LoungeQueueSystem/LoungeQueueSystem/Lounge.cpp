@@ -9,6 +9,7 @@
 
 Lounge::Lounge(int _maxSeats) :
 	maxSeats(_maxSeats) {
+	currentTime = 8 * 60;
 	//seats.reserve(maxSeats);
 };
 
@@ -41,6 +42,7 @@ void Lounge::seatGuests(Queue& queue) {
 	}
 	else std::cout << "there is space " << availableSeats << std::endl;
 
+
 	// Seat guests from the queue until no seats are available
 	while (availableSeats > 0 && queue.getSize() > 0) { //
 		std::cout << " starting to seat " << std::endl;
@@ -62,6 +64,7 @@ void Lounge::seatGuests(Queue& queue) {
 		}
 	}
 
+
 	// If there are still available seats, fill the queue with the remaining guests
 	/*if (availableSeats > 0) {
 		while (availableSeats > 0 && !remainingGuests.empty()) {
@@ -76,26 +79,56 @@ void Lounge::seatGuests(Queue& queue) {
 
 
 
-
-
-void Lounge::unseatGuests() {
-	std::cout << "will start unseating guests by their duration of stay" << std::endl;
-
+int Lounge::getTimeInMinutes(const std::string& timeString) {
+	size_t colonPos = timeString.find(":");
+	if (colonPos != std::string::npos) {
+		std::string minutesString = timeString.substr(colonPos + 1);
+		return std::stoi(minutesString);
+	}
+	return 0;
 }
 
 
 
-void Lounge::gotoNextTimeFrame() {
-	std::string earliestArrivalTime = seats.empty() ? "00:00" : seats[0].getArrivalTime();
-	std::cout << "starting time: " << earliestArrivalTime << std::endl;
-	
-	
 
 
+void Lounge::unseatGuests(int currentTime) {
+	std::cout << currentTime <<std::endl;
+	std::vector<Guest> guestsToUnseat;
+	int currentMinute = currentTime % 60;
+	int currentHour = currentTime / 60; // Starting hour is 8:00 AM
+	std::cout << currentMinute << std::endl;
+	std::cout << currentHour << std::endl;
+	for (Guest& g : seats) {
+		int arrivalMinute = g.getArrivalMinute();
+		int arrivalHour = g.getArrivalHour();
 
+		int elapsedMinutes = (currentHour - arrivalHour) * 60 + (currentMinute - arrivalMinute);
 
-	currentTime = getNextTime(currentTime);
+		if (elapsedMinutes >= g.getStayDuration()) {
+			guestsToUnseat.push_back(g);
+			std::cout << g.getGuestName() << " has been unseated." << std::endl;
+		}
+	}
+
+	// Remove unseated guests from the seats vector
+	for (const Guest& guest : guestsToUnseat) {
+		seats.erase(std::remove(seats.begin(), seats.end(), guest), seats.end());
+	}
+	std::cout << currentTime << std::endl;
 }
+
+
+
+
+
+//void Lounge::gotoNextTimeFrame() {
+//	std::string earliestArrivalTime = seats.empty() ? "00:00" : seats[0].getArrivalTime();
+//	std::cout << "starting time: " << earliestArrivalTime << std::endl;
+//	
+//
+//	currentTime = getNextTime(currentTime);
+//}
 
 
 

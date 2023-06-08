@@ -64,16 +64,10 @@ int main()
 
 	
 
-	std::cout << "\n**** unsorted arrival to the queue ******\n" << std::endl;
-
-	queue.printGuests();
-
 
 	std::cout << "\n**** sorted in the queue ****\n" << std::endl;
-
 	queue.sortQueue(queue);
 	queue.printGuests();
-
 
 	
 	std::cout << "\n*** seating into the lounge ***\n" << std::endl;
@@ -81,26 +75,32 @@ int main()
 	lounge.seatGuests(queue);
 	std::cout << lounge.getSeatsCount() << std::endl;
 
-
-
 	lounge.printLounge();
-
-	std::cout << "\n*** new queue ***\n" << std::endl;
-
-	queue.printGuests();
 
 	std::cout << "\n*** new queue sorted ***\n" << std::endl;
 	queue.sortQueue(queue);
 	queue.printGuests();
 
-	/*std::cout << "\nprinting lounge...\n" << std::endl;
-	for (Guest& guest : seats) {
-		std::cout << guest.getGuestName() << " | " << guest.tellIfVIP() << std::endl;
-	}*/
 
+	std::cout << "\n NOW ARE GOING TO UNSEAT GUESTS\n" << std::endl;
+
+
+
+	while (true) {
+		std::cout << "type 1 to simulate time by 5 minutes" << std::endl;
+		int n;
+		std::cin >> n;
+
+		if (n == 1) {
+			lounge.simulateNextTimeFrame(lounge, queue);
+		}
+
+	}
+	
 	
 
-	//lounge.gotoNextTimeFrame();
+
+
 
 
 
