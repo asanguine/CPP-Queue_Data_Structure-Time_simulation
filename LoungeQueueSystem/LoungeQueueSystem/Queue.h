@@ -20,10 +20,7 @@ private:
 
     Node* head = NULL;
     Node* tail;
-    std::queue<Guest>queue2;
-    //Queue queue2;
-    std::vector<Guest> remainingGuests;
-    //Guest remainingGuests[];
+
 
 public:
     Queue() : head(nullptr), tail(nullptr) {}
@@ -31,9 +28,14 @@ public:
     ~Queue() {};
 
 
-    void addGuest(const Guest& guest);
+    void enqueue(const Guest& guest);
     Guest dequeue();
-    //Node getfront();
+
+    Node getfront() {
+
+
+    }
+
     bool isEmpty();
     void printGuests();
     int getSize() const;
@@ -43,17 +45,13 @@ public:
 
     void sortQueue(Queue& queue);
 
-    std::vector<Guest>& getRemainingGuestsArray();
 
     std::vector<Guest> getGuests() const;
 
+    void mergeSort(Queue& q);
+    void merge(Queue& left, Queue& right, Queue& q);
 
-    ///void seatGuests(std::vector<Guest>& seats, int maxSeats);
 
-
-
-    //void splitQueue(Queue& leftQueue, Queue& rightQueue);
-    //void mergeQueues(Queue& leftQueue, Queue& rightQueue);
 
 
 

@@ -2,13 +2,10 @@
 
 
 
-void Queue::addGuest(const Guest& guest) {
+void Queue::enqueue(const Guest& guest) {
 
-    if (getSize() >= 10) {
-        std::cout << "The queue is full. Cannot add more guests." << std::endl;
-        remainingGuests.push_back(guest);
-
-        return;
+    if (getSize() <= 0) {
+        std::cout << "No guest left in the queue..." << std::endl;
     }
 
     Node* newNode = new Node(guest);
@@ -26,6 +23,7 @@ void Queue::addGuest(const Guest& guest) {
 }
 
 void Queue::printGuests() {
+    std::cout << "\nprinting queue\n" << std::endl;
     Node* temp = head;
     while (temp != nullptr) {
         std::cout << "Guest ID: " << temp->guest.getGuestName() << " | " << temp->guest.tellIfVIP() << std::endl;
@@ -50,7 +48,6 @@ Guest Queue::dequeue() {
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
 
     delete temp;
-
     return dequeuedGuest;
 }
 
@@ -77,33 +74,6 @@ int Queue::getSize() const{
 
 
 
-void Queue::sortQueue(Queue& queue) {
-
-    bool swapped = true;
-    int size = queue.getSize();
-
-    while (swapped) {
-        swapped = false;
-        Node* currentNode = queue.getHead();
-        Node* nextNode = currentNode->next;
-
-        for (int i = 0; i < size - 1; i++) {
-            if (!currentNode->guest.checkIfVIP() && nextNode->guest.checkIfVIP()) {
-                // Swap the VIP guest with the non-VIP guest
-                Guest temp = currentNode->guest;
-                currentNode->guest = nextNode->guest;
-                nextNode->guest = temp;
-                swapped = true;
-            }
-
-            currentNode = nextNode;
-            nextNode = nextNode->next;
-        }
-        size--;
-    }
-}
-
-
 
 
 std::vector<Guest> Queue::getGuests() const {
@@ -117,7 +87,46 @@ std::vector<Guest> Queue::getGuests() const {
 }
 
 
-std::vector<Guest>& Queue::getRemainingGuestsArray() {
-    return remainingGuests;
+
+
+
+void Queue::mergeSort(Queue& q) {
+    int n = q.getSize();
+    if (n < 2) return;
+
+    int mid = n / 2;
+    Queue left;
+    Queue right;
+
+    for (int i = 0; i < mid; i++) {
+        left.enqueue(q.dequeue());
+    }
+    for (int i = mid; i < n; i++) {
+        right.enqueue(q.dequeue());
+    }
+    mergeSort(left);
+    mergeSort(right);
+    merge(left, right, q);
 }
 
+
+void Queue::merge(Queue& left, Queue& right, Queue& q) {
+
+    while (!left.isEmpty() && !right.isEmpty()) {
+        int leftArrival = (left.getHead()->guest.getArrivalHour()) * 60 + (left.getHead()->guest.getArrivalMinute());
+        int rightArrival = (right.getHead()->guest.getArrivalHour()) * 60 + (right.getHead()->guest.getArrivalMinute());
+        if (leftArrival <= rightArrival) {
+            q.enqueue(left.dequeue());
+        }
+        else {
+            q.enqueue(right.dequeue());
+        }
+    }
+
+    while (!left.isEmpty()) {
+        q.enqueue(left.dequeue());
+    }
+    while (!right.isEmpty()) {
+        q.enqueue(right.dequeue());
+    }
+}

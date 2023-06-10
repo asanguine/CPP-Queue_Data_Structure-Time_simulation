@@ -37,15 +37,13 @@ public:
 
     void unseatGuests(int currentTime);
 
-    ///void checkAvailability();
+
 
     void addRemainingGuests(const Guest& guest);
 
     int getTimeInMinutes(const std::string& timeString);
 
     void printLounge();
-
-    //void gotoNextTimeFrame();
 
     std::string getEarliestTime();
 

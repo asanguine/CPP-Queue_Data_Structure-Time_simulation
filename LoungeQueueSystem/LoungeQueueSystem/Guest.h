@@ -39,6 +39,12 @@ public:
 		return std::stoi(minuteString);
 	}
 
+	int getStayDurationMinute() const {
+		std::string durationString = stayDuration.substr(3, 2);
+		return std::stoi(durationString);
+	}
+
+
 	bool operator==(const Guest& other) const {
 		return (guestName == other.guestName && arrivalTime == other.arrivalTime && stayDuration == other.stayDuration);
 	}
