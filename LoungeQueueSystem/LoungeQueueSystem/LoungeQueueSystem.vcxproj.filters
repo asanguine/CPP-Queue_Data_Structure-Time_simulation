@@ -30,9 +30,6 @@
     <ClCompile Include="CsvReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="InitMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Guest.h">
@@ -45,9 +42,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CsvReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InitMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

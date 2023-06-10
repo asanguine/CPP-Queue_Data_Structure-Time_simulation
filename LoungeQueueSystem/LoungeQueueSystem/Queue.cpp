@@ -4,9 +4,9 @@
 
 void Queue::enqueue(const Guest& guest) {
 
-    if (getSize() <= 0) {
+    /*if (getSize() <= 0) {
         std::cout << "No guest left in the queue..." << std::endl;
-    }
+    }*/
 
     Node* newNode = new Node(guest);
 
@@ -19,7 +19,6 @@ void Queue::enqueue(const Guest& guest) {
         tail = newNode;
         newNode -> next = NULL;
     } 
-
 }
 
 void Queue::printGuests() {
@@ -70,7 +69,6 @@ int Queue::getSize() const{
     }
     return count;
 }
-
 
 
 

@@ -12,15 +12,9 @@ class Lounge
 
 private:
     const int maxSeats;
-    //Queue queue;
-    //std::queue<Guest> remainingGuests;
-
-    //std::string currentTime;
-    //std::string currentTime;
     int currentTime;
 
     
-
 
 public:
     Lounge(int _maxSeats = 10);
@@ -29,15 +23,13 @@ public:
 
     std::vector<Guest> seats;
 
-    ///void init();
-
     int getSeatsCount();
 
-    void seatGuests(Queue& queue);
+    void seatGuests(Queue& queue, int currentTime);
 
     void unseatGuests(int currentTime);
 
-
+    int getCurrentTime()const;
 
     void addRemainingGuests(const Guest& guest);
 
@@ -45,20 +37,6 @@ public:
 
     void printLounge();
 
-    std::string getEarliestTime();
-
-    std::string getNextTime(std::string arrivalTime);
-
-
-    void simulateNextTimeFrame(Lounge& lounge, Queue& queue) {
-  
-        lounge.seatGuests(queue);
-        lounge.unseatGuests(currentTime);
-        currentTime += 5;
-        printLounge();
-     
-    }
+    void simulateNextTimeFrame(Lounge& lounge, Queue& queue);
 
 };
-
-

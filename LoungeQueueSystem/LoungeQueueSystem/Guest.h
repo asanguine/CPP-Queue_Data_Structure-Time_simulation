@@ -29,20 +29,12 @@ public:
 
 	std::string getArrivalTime() const;
 
-	int getArrivalHour() const {
-		std::string hourString = arrivalTime.substr(0, 2);
-		return std::stoi(hourString);
-	}
+	int getArrivalHour() const;
+	int getArrivalMinute() const;
+	int getArrivalTimeinInt() const;
 
-	int getArrivalMinute() const {
-		std::string minuteString = arrivalTime.substr(3, 2);
-		return std::stoi(minuteString);
-	}
 
-	int getStayDurationMinute() const {
-		std::string durationString = stayDuration.substr(3, 2);
-		return std::stoi(durationString);
-	}
+	int getStayDurationMinute() const;
 
 
 	bool operator==(const Guest& other) const {

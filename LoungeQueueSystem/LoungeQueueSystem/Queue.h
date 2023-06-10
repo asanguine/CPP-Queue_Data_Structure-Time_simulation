@@ -39,12 +39,10 @@ public:
     bool isEmpty();
     void printGuests();
     int getSize() const;
+
     Node* getHead() const {
         return head;
     };
-
-    void sortQueue(Queue& queue);
-
 
     std::vector<Guest> getGuests() const;
 
